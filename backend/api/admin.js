@@ -1,7 +1,11 @@
-const express = require('express');
 const { getReports } = require('../controllers/admincontroller');
-const router = express.Router();
 
-router.get('/reports', getReports);
+module.exports = (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/admin/reports') {
+    return getReports(req, res);
+  }
 
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
+
