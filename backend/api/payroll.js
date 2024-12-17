@@ -1,8 +1,10 @@
-const express = require('express');
 const { generatePayroll } = require('../controllers/payrollController');
-const router = express.Router();
 
-// Route to generate payrolls
-router.get('/generate', generatePayroll);
+module.exports = (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/payroll/generate') {
+    return generatePayroll(req, res);
+  }
 
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
