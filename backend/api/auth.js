@@ -1,7 +1,11 @@
-const express = require('express');
 const { login } = require('../controllers/authcontroller');
-const router = express.Router();
 
-router.post('/login', login);
+module.exports = (req, res) => {
+  if (req.method === 'POST' && req.url === '/api/auth/login') {
+    return login(req, res);
+  }
 
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
+
