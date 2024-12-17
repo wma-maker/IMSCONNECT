@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api'; // Replace with your backend URL if deployed
+const API_BASE_URL = 'https://imsconnectbackend.vercel.app/'; // Replace with your backend URL if deployed
 
 // Login API
 export const login = async (credentials) => {
