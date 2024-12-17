@@ -1,22 +1,27 @@
-const express = require('express');
 const {
   getIdeas,
   submitIdea,
   voteOnIdea,
   addRemarkOnIdea,
 } = require('../controllers/ideaController');
-const router = express.Router();
 
-// Route to fetch all ideas
-router.get('/', getIdeas);
+module.exports = (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/ideas') {
+    return getIdeas(req, res);
+  }
+  
+  if (req.method === 'POST' && req.url === '/api/ideas') {
+    return submitIdea(req, res);
+  }
 
-// Route to submit a new idea
-router.post('/', submitIdea);
+  if (req.method === 'POST' && req.url.match(/^\/api\/ideas\/\d+\/vote$/)) {
+    return voteOnIdea(req, res);
+  }
 
-// Route to vote on an idea
-router.post('/:id/vote', voteOnIdea);
+  if (req.method === 'POST' && req.url.match(/^\/api\/ideas\/\d+\/remark$/)) {
+    return addRemarkOnIdea(req, res);
+  }
 
-// Route to add a remark on an idea
-router.post('/:id/remark', addRemarkOnIdea);
-
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
