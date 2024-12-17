@@ -1,22 +1,27 @@
 {
-  "name": "imsconnect-backend",
+  "name": "ims-connect-backend",
   "version": "1.0.0",
-  "description": "Backend for IMSConnect",
+  "description": "Backend for IMS Connect",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "vercel start"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "body-parser": "^1.19.0"
+    "body-parser": "^1.19.0",
+    "@vercel/node": "^1.10.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
+  "devDependencies": {},
   "engines": {
-    "node": "22.x"
-  }
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/IMSConnect1.git"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
-
