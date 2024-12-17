@@ -1,23 +1,21 @@
 {
-  "name": "your-project-name",
+  "name": "ims-backend",
   "version": "1.0.0",
-  "description": "Your project description",
-  "main": "index.js",
+  "description": "IMS Backend API",
+  "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
-    "build": "echo \"Nothing to build\"",
     "dev": "vercel dev"
   },
-  
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "vercel": "^23.0.0"
+    "body-parser": "^1.20.2"
   },
-  "devDependencies": { 
+  "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
