@@ -1,13 +1,18 @@
-const express = require('express');
 const { getTimesheets, submitTimesheet, updateTimesheetApproval } = require('../controllers/timesheetcontroller');
-const router = express.Router();
 
-// Route to fetch all timesheets
-router.get('/', getTimesheets);
+module.exports = (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/timesheets') {
+    return getTimesheets(req, res);
+  }
 
-// Route to submit a new timesheet
-router.post('/', submitTimesheet);
+  if (req.method === 'POST' && req.url === '/api/timesheets') {
+    return submitTimesheet(req, res);
+  }
 
-router.patch('/:id/approve', updateTimesheetApproval);
+  if (req.method === 'PATCH' && req.url.match(/^\/api\/timesheets\/\d+\/approve$/)) {
+    return updateTimesheetApproval(req, res);
+  }
 
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
