@@ -1,8 +1,13 @@
-const express = require('express');
 const { getIdeas, submitTimesheet } = require('../controllers/employeecontroller');
-const router = express.Router();
 
-router.get('/ideas', getIdeas);
-router.post('/timesheet', submitTimesheet);
+module.exports = (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/employee/ideas') {
+    return getIdeas(req, res);
+  } 
+  if (req.method === 'POST' && req.url === '/api/employee/timesheet') {
+    return submitTimesheet(req, res);
+  }
 
-module.exports = router;
+  // Handle unsupported methods or routes
+  res.status(404).json({ message: 'Not Found' });
+};
