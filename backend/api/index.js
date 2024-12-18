@@ -11,10 +11,20 @@ const payrollRoutes = require('./payroll');
 
 const app = express();
 
+const allowedOrigins = [
+  'https://imsconnectfrontend2.vercel.app',
+  'https://frontend-flame-nu.vercel.app'
+];
+
 app.use(cors({
-  origin: 'https://imsconnectfrontend2.vercel.app', // Allow your frontend origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true, // Allow cookies or auth headers
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 app.options('*', cors());
 app.use(express.json());
