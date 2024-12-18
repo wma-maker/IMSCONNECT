@@ -1,6 +1,6 @@
 // api/auth/login.js
 const authMiddleware = require('../middleware/authmiddleware');
-const { login } = require('../../controllers/authcontroller');
+const { login } = require('../controllers/authcontroller');
 
 module.exports = (req, res) => {
   // Apply the authentication middleware first
