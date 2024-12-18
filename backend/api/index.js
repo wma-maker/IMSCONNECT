@@ -11,7 +11,11 @@ const payrollRoutes = require('./payroll');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://imsconnectfrontend2.vercel.app', // Allow your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true, // Allow cookies or auth headers
+}));
 app.use(express.json());
 app.use(bodyParser.json());
 
