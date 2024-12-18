@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://imsconnectbackend3.vercel.app/'; // Replace with your backend URL if deployed
+const API_BASE_URL = 'https://server-gamma-drab.vercel.app/'; // Replace with your backend URL if deployed
 
 // Login API
 export const login = async (credentials) => {
