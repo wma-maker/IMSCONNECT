@@ -1,5 +1,5 @@
-const API_BASE_URL = 'https://server-gamma-drab.vercel.app/'; // Replace with your backend URL if deployed
-
+ // Replace with your backend URL if deployed
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 // Login API
 export const login = async (credentials) => {
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
