@@ -16,6 +16,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // Allow cookies or auth headers
 }));
+app.options('*', cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
