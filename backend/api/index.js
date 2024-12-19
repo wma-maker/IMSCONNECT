@@ -41,11 +41,11 @@ app.use(bodyParser.json());
 
 // Define routes
 app.use('/auth', authRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/employee', employeeRoutes);
-app.use('/api/ideas', ideasRoutes);
-app.use('/api/timesheets', timesheetRoutes);
-app.use('/api/payroll', payrollRoutes);
+app.use('/admin', adminRoutes);
+app.use('/employee', employeeRoutes);
+app.use('/ideas', ideasRoutes);
+app.use('/timesheets', timesheetRoutes);
+app.use('/payroll', payrollRoutes);
 
 // Root route to test deployment
 app.get('/', (req, res) => {
