@@ -26,6 +26,15 @@ app.use(cors({
   },
   credentials: true
 }));
+
+
+const corsOptions = {
+  origin: 'https://frontend-flame-nu.vercel.app', // Replace with your frontend URL
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+
+app.use(cors(corsOptions));
 app.options('*', cors());
 app.use(express.json());
 app.use(bodyParser.json());
